@@ -20,11 +20,8 @@ const gif = require("gif-search");
 
 const client = new Discord.Client({disableEveryone: true});
 
-const prefix = "1";
+const prefix = "4";
 
-var adminprefix = '²'
-
-const developers = ["الايدي"]
 /////////////////////////
 ////////////////////////
 
@@ -317,10 +314,10 @@ function play(guild, song) {
 
 
 client.on('message', message => {
-    if (message.content === 'Xhelp') {
+    if (message.content === 'Nhelp') {
         let helpEmbed = new Discord.RichEmbed()
         .setTitle('**أوامر الميوزك...**')
-        .setDescription('**برفكس البوت (X)**')
+        .setDescription('**برفكس البوت (N)**')
         .addField('play', 'لتشغيل اغنية')
         .addField('join', 'دخول رومك الصوتي')
         .addField('disconnect', 'الخروج من رومك الصوتي')
@@ -335,11 +332,10 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-    if (message.content === 'Xgeneral_commands') {
+    if (message.content === 'Ngeneral_commands') {
         let helpEmbed = new Discord.RichEmbed()
         .setTitle('**أوامر عامة...**')
         .addField('avatar', "افاتار الشخص المطلوب")
-        .addField('gif', 'البحث عن جيف انت تطلبه')
         .addField('ping', 'معرفة ping البوت')
         .setFooter('المزيد قريبا ان شاء الله!')
       message.channel.send(helpEmbed);
@@ -348,15 +344,17 @@ client.on('message', message => {
 
 client.on('ready', () => {
    console.log(`----------------`);
-      console.log(`1PLAY - Script By : SAJED`);
+      console.log(`4PLAY - Script By : SAJED`);
         console.log(`----------------`);
-      console.log(`ON ${client.guilds.size} Servers '     Script By : EX Clan ' `);
+      console.log(`ON ${client.guilds.size} Servers '     Script By : SAJED ' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`Xhelp `,"http://twitch.tv/Death Shop")
+client.user.setGame(`4help `,"http://twitch.tv/Death Shop")
 client.user.setStatus("dnd")
 });
 
+var adminprefix = '²'
+const developers = ["522857375561154578,455735540155809794"]
 client.on('message', message => {
     var argresult = message.content.split(` `).slice(1).join(' ');
       if (!developers.includes(message.author.id)) return;
@@ -381,15 +379,3 @@ client.on('message', message => {
     client.user.setGame(argresult, "https://www.twitch.tv/One");
       message.channel.send(`tm`)
   }
-  if (message.content.startsWith(adminprefix + 'setname')) {
-  client.user.setUsername(argresult).then
-      message.channel.send(`Changing The Name To ..**${argresult}** `)
-} else
-if (message.content.startsWith(adminprefix + 'setavatar')) {
-  client.user.setAvatar(argresult);
-    message.channel.send(`Changing The Avatar To :**${argresult}** `);
-}
-});
- 
- 
-client.login(process.env.BOT_TOKEN);
